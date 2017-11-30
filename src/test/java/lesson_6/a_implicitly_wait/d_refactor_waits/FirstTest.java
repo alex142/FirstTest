@@ -20,6 +20,7 @@ import sun.applet.Main;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementLocated;
 
 @RunWith(JUnit4.class)
 
