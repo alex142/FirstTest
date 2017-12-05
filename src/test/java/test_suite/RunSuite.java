@@ -1,7 +1,6 @@
-package testSuite;
+package test_suite;
 
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
