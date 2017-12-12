@@ -20,27 +20,27 @@ public class CustomConditions {
             public List<WebElement> apply(@Nullable WebDriver webDriver) throws IndexOutOfBoundsException {
                 List<WebElement> list = webDriver.findElements(locator);
                 return list.get(index).getText().equals(text) ? list : null;
-
             }
         };
     }
-    public static ExpectedCondition<WebElement> pageIsLoaded(String title, String url){
-        return new ExpectedCondition<WebElement>() {
+    public static ExpectedCondition<Boolean> pageIsLoaded(String title, String url){
+        return new ExpectedCondition<Boolean>() {
             @Nullable
             @Override
-            public WebElement apply(@Nullable WebDriver webDriver) {
+            public Boolean apply(@Nullable WebDriver webDriver) {
                 String pageTitle = webDriver.getTitle();
                 String pageURL = webDriver.getCurrentUrl();
-                return pageTitle.contains(title) && pageURL.contains(url) ? this.apply(webDriver) : null;
-             }
+                return pageTitle.contains(title) && pageURL.contains(url);
+            }
         };
+
     }
-    public static ExpectedCondition<WebElement> stalenesOfElement(WebElement element){
-        return new ExpectedCondition<WebElement>() {
+    public static ExpectedCondition<Boolean> stalenesOfElement(WebElement element){
+        return new ExpectedCondition<Boolean>() {
             @Nullable
             @Override
-            public WebElement apply(@Nullable WebDriver webDriver) {
-                return  !element.isDisplayed() ? this.apply(webDriver) : null;
+            public Boolean apply(@Nullable WebDriver webDriver) {
+                return !element.isDisplayed();
             }
         };
     }

@@ -39,6 +39,7 @@ public class LoginPage{
     }
 
     public LoginPage(WebDriver webDriver){
-        PageFactory.initElements(webDriver, LoginPage.class);
+        this.webDriver = webDriver;
+        PageFactory.initElements(webDriver, this);
     }
 }
