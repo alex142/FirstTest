@@ -17,7 +17,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 @RunWith(JUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestCase{
+public class TestClass {
     //protected static final String BASE_URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     protected static final String BASE_URL = "http://automationpractice.com/index.php";
     public static final By SIGN_IN_BUTTON_LOCATOR = By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a");
@@ -27,7 +27,7 @@ public class TestCase{
 
     @BeforeClass
     public static void setUp(){
-        System.setProperty("webdriver.chrome.driver", "C:\\install\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "C:\\install\\chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
@@ -45,7 +45,7 @@ public class TestCase{
     @Ignore
     @Test
     public void login_1(){
-        LoginPage loginPage = PageFactory.initElements(webDriver, LoginPage.class);
+        LoginPage loginPage = new LoginPage(webDriver);
         loginPage.login(email, passwd);
         assertThat(titleContains("My account - My Store"));
 
@@ -53,17 +53,15 @@ public class TestCase{
     //@Ignore
     @Test
     public void login_2(){
-        LoginPage loginPage = PageFactory.initElements(webDriver, LoginPage.class);
-        loginPage.enterUserName(email);
-        loginPage.enterPassword(passwd);
-        loginPage.clickSigninBtn();
+        LoginPage loginPage = new LoginPage(webDriver);
+        loginPage.enterUserName(email).enterPassword(passwd).clickSigninBtn();
         assertThat(titleContains("My account - My Store"));
     }
 
     @Test
     public void logout(){
         assertThat(titleContains("My account - My Store"));
-        AccountPage accountPage = PageFactory.initElements(webDriver, AccountPage.class);
+        AccountPage accountPage =  new AccountPage(webDriver);
         accountPage.signOut();
         assertThat(titleContains("Login - My Store"));
     }

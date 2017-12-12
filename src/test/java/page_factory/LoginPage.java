@@ -3,6 +3,7 @@ package page_factory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage{
 
@@ -16,14 +17,16 @@ public class LoginPage{
     @FindBy(xpath = "//*[@id=\"SubmitLogin\"]/span")
     private WebElement submitButton;
 
-    public void enterUserName(String email){
+    public LoginPage enterUserName(String email){
         emailBox.clear();
         emailBox.sendKeys(email);
+        return new LoginPage(webDriver);
         //webDriver.findElement(By.id("email")).sendKeys(email);
     }
-    public void enterPassword(String passwd){
+    public LoginPage enterPassword(String passwd){
         passBox.clear();
         passBox.sendKeys(passwd);
+        return new LoginPage(webDriver);
     }
     public void clickSigninBtn(){
         submitButton.click();
@@ -35,5 +38,7 @@ public class LoginPage{
         return new AccountPage(webDriver);
     }
 
-    public LoginPage(WebDriver webDriver){this.webDriver = webDriver;}
+    public LoginPage(WebDriver webDriver){
+        PageFactory.initElements(webDriver, LoginPage.class);
+    }
 }
