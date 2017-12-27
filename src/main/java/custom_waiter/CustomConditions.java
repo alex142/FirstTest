@@ -19,7 +19,12 @@ public class CustomConditions {
             @Override
             public List<WebElement> apply(@Nullable WebDriver webDriver) throws IndexOutOfBoundsException {
                 List<WebElement> list = webDriver.findElements(locator);
-                return list.get(index).getText().equals(text) ? list : null;
+                //Debug only
+                /*
+                for (WebElement item : list) {
+                    System.out.println(item.getText());
+                }*/
+                return list.get(index).getText().equalsIgnoreCase(text) ? list : null;
             }
         };
     }
@@ -30,7 +35,8 @@ public class CustomConditions {
             public Boolean apply(@Nullable WebDriver webDriver) {
                 String pageTitle = webDriver.getTitle();
                 String pageURL = webDriver.getCurrentUrl();
-                return pageTitle.contains(title) && pageURL.contains(url);
+                //System.out.println(pageTitle + ' ' + pageURL);
+                return pageTitle.equals(title) && pageURL.equals(url);
             }
         };
 
@@ -40,7 +46,8 @@ public class CustomConditions {
             @Nullable
             @Override
             public Boolean apply(@Nullable WebDriver webDriver) {
-                return !element.isDisplayed();
+                System.out.println("Start");
+                return false ? element.isDisplayed() : true;
             }
         };
     }

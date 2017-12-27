@@ -12,11 +12,11 @@ import java.util.List;
 public abstract class SimpleAPI {
     public abstract WebDriver getWebDriver();
 
-    WebElement $(By locator){
+    protected WebElement $(By locator){
         return assertThat(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    WebElement $(String xpath){
+    protected WebElement $(String xpath){
         return $(By.xpath(xpath));
     }
 
@@ -31,7 +31,7 @@ public abstract class SimpleAPI {
     protected void open(String url){
         getWebDriver().get(url);
     }
-    protected <V> V assertThat(Function<? super WebDriver, V> condition) {
+    protected  <V> V assertThat(Function<? super WebDriver, V> condition) {
         return (new WebDriverWait(getWebDriver(),5)).until(condition);
     }
 }

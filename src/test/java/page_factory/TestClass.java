@@ -66,7 +66,7 @@ public class TestClass {
         assertThat(titleContains("Login - My Store"));
     }
 
-    private static void assertThat(ExpectedCondition<Boolean> condition) {
+    public static void assertThat(ExpectedCondition<Boolean> condition) {
         (new WebDriverWait(webDriver, 5)).until(condition);
     }
 
