@@ -1,0 +1,5 @@
+<root>
+    <item name='org.openqa.selenium.support.FindBy'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

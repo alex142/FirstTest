@@ -1,11 +1,11 @@
-package page_factory;
+package site_pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage{
+public class LoginPage extends BasePage{
 
     private WebDriver webDriver;
     @FindBy(id = "email")
@@ -28,6 +28,7 @@ public class LoginPage{
         passBox.sendKeys(passwd);
         return new LoginPage(webDriver);
     }
+
     public void clickSigninBtn(){
         submitButton.click();
     }
@@ -40,7 +41,6 @@ public class LoginPage{
     }
 
     public LoginPage(WebDriver webDriver){
-        this.webDriver = webDriver;
-        PageFactory.initElements(webDriver, this);
+        super(webDriver);
     }
 }
