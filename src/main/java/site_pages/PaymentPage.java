@@ -8,7 +8,8 @@ public class PaymentPage extends BasePage{
         super(webDriver);
     }
 
-    public void confirmOrder(){
+    public void payByBankWire(){
+        assertThat(ExpectedConditions.elementToBeClickable($("//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a/span")));
         LOG.info("Select BANK-WIRE payment");
         $("//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a/span").click();
 

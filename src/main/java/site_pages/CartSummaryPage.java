@@ -9,7 +9,8 @@ public class CartSummaryPage extends BasePage {
     public String getItemDesc(){
         return $("//*[@id=\"product_5_19_0_40162\"]/td[2]/p/a").getText();
     }
-    public AddressPage checkout()
+
+    public AddressPage proceedToAdrressPage()
     {
         LOG.info("Proceed to Address page");
         $("//*[@id=\"center_column\"]/p[2]/a[1]/span").click();

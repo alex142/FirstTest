@@ -43,4 +43,9 @@ public class MainPage extends BasePage {
         return new LoginPage(webDriver);
     }
 
+    public AccountPage goToAccount(){
+        $("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a/span").click();
+        return new AccountPage(webDriver);
+    }
+
 }

@@ -51,4 +51,16 @@ public class CustomConditions {
             }
         };
     }
+
+    public static ExpectedCondition<Boolean> textOfElementEquals(String sampleText, String elementText){
+        return new ExpectedCondition<Boolean>() {
+            @Nullable
+            @Override
+            public Boolean apply(@Nullable WebDriver webDriver) {
+
+                return sampleText.contains(elementText);
+            }
+        };
+
+    }
 }
