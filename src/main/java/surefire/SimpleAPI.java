@@ -1,4 +1,4 @@
-package iframe;
+package surefire;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
