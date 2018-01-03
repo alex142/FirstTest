@@ -29,7 +29,7 @@ public class CustomConditions {
                     textOfElement =  list.get(index).getText();
                 }
                 catch (IndexOutOfBoundsException e) {
-                    System.out.println("Size of the list doesn't allow given index");
+                    e.printStackTrace();
                 }
                 return textOfElement.equalsIgnoreCase(text) ? list : null;
             }

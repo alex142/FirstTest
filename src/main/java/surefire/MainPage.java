@@ -44,7 +44,11 @@ public class MainPage extends BasePage {
         return text;
     }
 
-
+    public void enterQuery(String query) {
+        $(SEARCH_FIELD_LOCATOR).click();
+        $(SEARCH_FIELD_LOCATOR).clear();
+        $(SEARCH_FIELD_LOCATOR).sendKeys(query);
+    }
 
     public LoginPage goToLogin()
     {

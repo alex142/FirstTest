@@ -15,14 +15,23 @@ public class CustomConditions {
         return new ExpectedCondition<List<WebElement>>() {
             @Nullable
             @Override
-            public List<WebElement> apply(@Nullable WebDriver webDriver) throws IndexOutOfBoundsException {
+            public List<WebElement> apply(@Nullable WebDriver webDriver){
                 List<WebElement> list = webDriver.findElements(locator);
                 //Debug only
                 /*
                 for (WebElement item : list) {
                     System.out.println(item.getText());
                 }*/
-                return list.get(index).getText().equalsIgnoreCase(text) ? list : null;
+                String textOfElement = "";
+                try {
+                    textOfElement =  list.get(index).getText();
+                }
+                catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+
+                }
+                //System.out.println(textOfElement);
+                return textOfElement.equalsIgnoreCase(text) ? list : null;
             }
         };
     }
@@ -45,7 +54,7 @@ public class CustomConditions {
             @Override
             public Boolean apply(@Nullable WebDriver webDriver) {
                 System.out.println("Start");
-                return false ? element.isDisplayed() : true;
+                return element.isDisplayed() ? false : true;
             }
         };
     }
